@@ -38,11 +38,11 @@ export default {
       const margin = {
         top: 20,
         right: 20,
-        bottom: 30,
+        bottom: 20,
         left: 50
       };
-      const width = 500;
-      const height = 500;
+      const width = document.body.clientWidth;
+      const height = document.body.clientHeight;
 
       const svg = d3
         .select("#histogram svg")
@@ -59,7 +59,7 @@ export default {
       const y = d3.scaleLinear().rangeRound([height, 0]);
 
       d3.csv("/assets/data2.csv").then(data => {
-        console.log(data);
+        //console.log(data);
 
         data = data.slice(0, 20);
 
@@ -102,8 +102,8 @@ export default {
         bottom: 50,
         left: 50
       };
-      const width = 960 - margin.left - margin.right;
-      const height = 500 - margin.top - margin.bottom;
+      const width = window.innerWidth - margin.left - margin.right;
+      const height = window.innerHeight - margin.top - margin.bottom;
       d3.csv("/assets/data2.csv").then(data => {
         data = data.slice(0, 70);
 //console.log(data);
@@ -128,7 +128,7 @@ export default {
           .call(d3.axisBottom(xScale));
         svg.append('g')
           .attr('class', 'y axis')
-          .attr('transform', 'translate(0, 0)')
+          .attr('transform', `translate(0, 0)`)
           .call(d3.axisLeft(yScale));
         svg.append('path')
           .datum(data)
@@ -143,8 +143,8 @@ export default {
         bottom: 50,
         left: 50
       };
-      const width = 960 - margin.left - margin.right;
-      const height = 500 - margin.top - margin.bottom;
+      const width = window.innerWidth - margin.left - margin.right;
+      const height = window.innerHeight - margin.top - margin.bottom;
       d3.csv("/assets/data2.csv").then(async data => {
         for (var i = 0; i < 280; i = i + 70) {
           await new Promise((resolve) => {
@@ -155,7 +155,7 @@ export default {
               const _data = data.slice(i, i + 70);
               const min = d3.min(_data.map(d => Number(d.Rank.slice(0, -2))));
               const max = d3.max(_data.map(d => Number(d.Rank.slice(0, -2))));
-              console.log(_data, min, max);
+              //console.log(_data, min, max);
               const xScale = d3.scaleLinear()
                 .domain([min, max])
                 .range([0, width]);

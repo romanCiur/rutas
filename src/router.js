@@ -4,6 +4,8 @@ import Home from "./views/Home.vue";
 import Googleapps from "./views/Googleapps.vue";
 import Starbucks from "./views/Starbucks.vue";
 import Dataviz from "./views/Dataviz.vue";
+import Graph from "./views/Graph.vue";
+import Linear from "./views/Linear.vue";
 
 Vue.use(Router);
 
@@ -30,6 +32,16 @@ export default new Router({
       path: "/Datagraphs",
       name: "Datagraphs",
       component: Dataviz
+    },
+    {
+      path: "/GrapH",
+      name: "Graph",
+      component: Graph
+    },
+    {
+      path: "/Linear",
+      name: "Linear",
+      component: Linear
     },
     {
       path: "/about",
